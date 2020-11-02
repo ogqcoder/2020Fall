@@ -31,7 +31,7 @@
           </ul>
         </aside>
       </div>
-      <div class="column is-two-thirds">
+      <div class="column is-four-fifthss">
         <table>
           <h1>User Table</h1>
           <tr>

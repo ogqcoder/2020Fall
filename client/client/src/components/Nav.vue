@@ -40,13 +40,14 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div v-if="!$auth.loading" id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <router-link class="navbar-item" to="/">Home</router-link>
 
           <router-link class="navbar-item" to="/about">About</router-link>
           <router-link class="navbar-item" to="/feed">Feed</router-link>
           <router-link class="navbar-item" to="/admin">Admin</router-link>
+
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
 
@@ -62,16 +63,33 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
+            <div class="buttons" v-if="!$auth.loading">
+              <a v-if="!$auth.isAuthenticated" class="button is-primary">
                 <router-link class="navbar-item" to="/register"
                   >Register</router-link
                 >
               </a>
-
+              <p class="navbar-item" v-if="$auth.isAuthenticated">
+                Welcome {{ $auth.user.nickname }}
+              </p>
               <a class="button is-light"
-                ><router-link class="navbar-item" to="/login"
-                  >Login</router-link
+                ><router-link class="navbar-item" to="/login">
+                  <div v-if="!$auth.loading">
+                    <!-- show login when not authenticated -->
+                    <a
+                      v-if="!$auth.isAuthenticated"
+                      @click="login"
+                      class="button is-dark"
+                      ><strong>Sign in</strong></a
+                    >
+                    <!-- show logout when authenticated -->
+                    <a
+                      v-if="$auth.isAuthenticated"
+                      @click="logout"
+                      class="button is-dark"
+                      ><strong>Log out</strong></a
+                    >
+                  </div></router-link
                 ></a
               >
             </div>
@@ -101,6 +119,15 @@ export default {
     },
     expandNav() {
       document.getElementById();
+    },
+    login() {
+      this.$auth.loginWithRedirect();
+    },
+    // Log the user out
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin,
+      });
     },
   },
 };

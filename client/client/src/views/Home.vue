@@ -1,15 +1,13 @@
 <template>
   <div class="home">
     <!-- <Nav /> -->
-    <div class="group">
-      <div class="content">
+    <div v-if="!$auth.loading" class="group">
+      <div v-if="!$auth.isAuthenticated" class="content">
         <h1>Do Better For Yourself</h1>
-        <p>
-          We of Get Fit or Go Home are here to add years to your prime and help
-          you stay there until you DIE
-        </p>
+        <p>We are a community of people with all different walks of lif</p>
         <a class="btn" href="#/register">Let's Go!</a>
       </div>
+
       <div class="image">
         <img src="../assets/workout.jpg" alt="" />
       </div>
