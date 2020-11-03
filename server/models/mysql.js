@@ -26,10 +26,10 @@ const query = (sql, binding) => {
 
 
 module.exports = { pool, query }
-var sql = "INSERT INTO users (firstname, lastnamec) VALUES ?";
-var values = [['Garfield', 'Phillips'], ['Timothy', 'Smith']]
-query(sql, [values])
-    .then((rows) => { console.log(rows.affectedRows) })
-    .catch(err => {
-        console.log(err)
-    })
+// var sql = "INSERT INTO users (firstname, lastname) VALUES ?";
+// var values = [['Garfield', 'Phillips'], ['Timothy', 'Smith']]
+// query(sql, [values])
+//     .then((rows) => { console.log(rows.affectedRows) })
+//     .catch(err => {
+//         console.log(err)
+//     })
