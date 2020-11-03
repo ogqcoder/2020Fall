@@ -8,8 +8,6 @@
         <input type="text" name="" id="" />
         <label for="">Email</label>
         <input type="email" name="email" id="" />
-        <label for="">Username</label>
-        <input type="text" name="uname" id="" />
         <label for="">Password</label>
         <input type="text" name="password" id="" />
         <label for="">Confirm Password</label>
@@ -59,5 +57,12 @@ form input {
   padding: 10px;
   outline: none;
   font-size: 20px;
+}
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  /* padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px; */
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 </style>

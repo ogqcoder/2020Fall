@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h2 class="title is-2">Feed</h2>
+    <!-- <h2 class="title is-2">Feed</h2> -->
     <div class="columns">
       <div class="column is-two-thirds">
         <div class="title is-3">Main Feed</div>

@@ -1,5 +1,115 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Workout Tracking</h1>
+          <h2 class="subtitle">Consistency is Key</h2>
+          <img class="hero-img" src="../assets/pushup.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+          A simple container to divide your page into <strong>sections</strong>,
+          like the one you're currently reading
+        </h2>
+      </div>
+    </section>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">The Buddy System...</p>
+              <p class="subtitle">
+                Studies shows that you are more likely to complete something
+                when your friend is right there supporting you. With the Workout
+                Tracking App, you have the benefit of supporting your friends
+                while they support you right back!
+              </p>
+            </article>
+            <article class="tile is-child notification is-warning center">
+              <!-- <p class="title">...tiles</p>
+              <p class="subtitle">Bottom tile</p> -->
+              <figure class="image is-128x128 d-block">
+                <img src="../assets/dumbbell.png" />
+              </figure>
+              <figure class="image is-128x128 d-block">
+                <img src="../assets/run.jpg" />
+              </figure>
+              <figure class="image is-128x128 d-block">
+                <img src="../assets/dumbbell.png" />
+              </figure>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+              <p class="title">Workout with friends virtually</p>
+              <figure class="image is-4by3">
+                <img class="strength" src="../assets/strength.jpg" />
+              </figure>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title">Wide tile</p>
+            <p class="subtitle">Aligned with the right tile</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+          <div class="content">
+            <img class="tall-img" src="../assets/multiple.png" alt="" />
+            <p class="title">Tall tile</p>
+            <p class="subtitle">With even more content</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p><strong>Workout Tracking App</strong> by Garfield Phillips</p>
+      </div>
+    </footer>
   </div>
 </template>
+
+<style scoped>
+.strength {
+  object-fit: cover;
+}
+.hero-img {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+}
+.d-block {
+  display: inline-block;
+}
+.is-128x128 {
+  margin: 0 15px;
+}
+.center {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.tall-img {
+  height: 500px;
+  /* max-height: 80%; */
+  /* width: 100%; */
+  object-fit: cover;
+}
+</style>
