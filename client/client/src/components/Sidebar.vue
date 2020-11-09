@@ -1,6 +1,6 @@
 <template>
   <nav class="panel">
-    <p class="panel-heading">Sidebar</p>
+    <p class="panel-heading">Followers</p>
     <div class="panel-block">
       <p class="control has-icons-left">
         <input class="input" type="text" placeholder="Search" />
@@ -9,30 +9,30 @@
         </span>
       </p>
     </div>
-    <p class="panel-tabs">
+    <!-- <p class="panel-tabs">
       <a class="is-active">All</a>
       <a>Public</a>
       <a>Private</a>
       <a>Sources</a>
       <a>Forks</a>
-    </p>
+    </p> -->
     <a class="panel-block is-active">
       <span class="panel-icon">
         <i class="fas fa-book" aria-hidden="true"></i>
       </span>
-      bulma
+      Goku
     </a>
     <a class="panel-block">
       <span class="panel-icon">
         <i class="fas fa-book" aria-hidden="true"></i>
       </span>
-      marksheet
+      Vegeta
     </a>
     <a class="panel-block">
       <span class="panel-icon">
         <i class="fas fa-book" aria-hidden="true"></i>
       </span>
-      minireset.css
+      Master Roshi
     </a>
     <a class="panel-block">
       <span class="panel-icon">
@@ -40,27 +40,6 @@
       </span>
       jgthms.github.io
     </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-      </span>
-      daniellowtw/infboard
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-      </span>
-      mojs
-    </a>
-    <label class="panel-block">
-      <input type="checkbox" />
-      remember me
-    </label>
-    <div class="panel-block">
-      <button class="button is-link is-outlined is-fullwidth">
-        Reset all filters
-      </button>
-    </div>
   </nav>
 </template>
 

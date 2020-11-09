@@ -1,11 +1,11 @@
 <template>
   <div class="form">
-    <form action="#">
-      <label for="">Username</label>
-      <input type="text" />
+    <form action="/feed">
+      <label for="">Email</label>
+      <input type="email" />
       <label for="">Password</label>
       <input type="password" />
-      <button type="submit">Submit</button>
+      <button @click.prevent="login" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
   name: "User",
   props: {
     be: String,
+    login: Function,
   },
   data() {
     return {

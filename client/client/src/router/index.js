@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
+// import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Feed from '../views/Feed.vue'
 import Admin from '../views/Admin.vue'
+import Profile from '../views/Profile.vue'
+import session from '../models/session'
 
 Vue.use(VueRouter)
 
@@ -24,8 +26,8 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login',
-    component: Login
+    name: 'login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
   },
   {
     path: '/register',
@@ -35,12 +37,18 @@ const routes = [
   {
     path: '/feed',
     name: 'Feed',
-    component: Feed
+    component: Feed,
+    beforeEnter: checkuser
   },
   {
     path: '/admin',
     name: 'Admin',
     component: Admin
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
 ]
 
@@ -49,3 +57,11 @@ const router = new VueRouter({
 })
 
 export default router
+
+function checkuser(to, from, next) {
+  if (session.user) {
+    next();
+  } else {
+    next('Login')
+  }
+}

@@ -2,17 +2,21 @@
 <template>
   <div id="app">
     <Nav />
+    <Notifications />
+    <router-view />
   </div>
 </template>
 <script>
 // @ is an alias to /src
 // import Register from "@/components/Register.vue";
 import Nav from "@/components/Nav.vue";
+import Notifications from "@/components/Notifications.vue";
 import "bulma/css/bulma.css";
 export default {
   name: "Login",
   components: {
     Nav,
+    Notifications,
   },
 };
 </script>

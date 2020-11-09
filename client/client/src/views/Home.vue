@@ -5,8 +5,8 @@
       <div class="content">
         <h1>Do Better For Yourself</h1>
         <p>
-          We of Get Fit or Go Home are here to add years to your prime and help
-          you stay there until you DIE
+          Where you can workout and keep track of your goals as well as making
+          sure your friends are fulfilling their goals as well!
         </p>
         <a class="btn" href="#/register">Let's Go!</a>
       </div>
@@ -101,7 +101,7 @@ img {
 
 @media (max-width: 800px) {
   .content {
-    transform: translate(30%);
+    transform: translate(45%);
   }
 }
 </style>

@@ -16,13 +16,20 @@
       <router-link to="/register">Register</router-link>
     </div> -->
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav
+      onresize="resize()"
+      class="navbar"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="navbar-brand">
         <a class="navbar-item is-large"> Workout Tracking </a>
 
         <a
+          @click="expandNav()"
           role="button"
           class="navbar-burger burger"
+          id="burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -35,13 +42,14 @@
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
+        <div class="navbar-start" id="start">
           <router-link class="navbar-item" to="/">Home</router-link>
 
           <router-link class="navbar-item" to="/about">About</router-link>
           <router-link class="navbar-item" to="/feed">Feed</router-link>
           <router-link class="navbar-item" to="/admin">Admin</router-link>
-          <div class="navbar-item has-dropdown is-hoverable">
+          <router-link class="navbar-item" to="/profile">Profile</router-link>
+          <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
 
             <div class="navbar-dropdown">
@@ -51,33 +59,21 @@
               <hr class="navbar-divider" />
               <a class="navbar-item"> Report an issue </a>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <router-link class="navbar-item" to="/register"
-                  >Register</router-link
-                >
-              </a>
-
-              <a class="button is-light"
-                ><router-link class="navbar-item" to="/login"
-                  >Login</router-link
-                ></a
-              >
-            </div>
+            <LoginBadge />
           </div>
         </div>
       </div>
     </nav>
-    <router-view />
   </div>
 </template>
 
 <script>
+import LoginBadge from "@/components/LoginBadge";
 export default {
   name: "Nav",
   props: {
@@ -94,8 +90,31 @@ export default {
       console.log("hello");
     },
     expandNav() {
-      document.getElementById();
+      var navbarStart = document.getElementById("navbarBasicExample");
+      // var navbarBurger = document.getElementById("burger");
+      // var open = false;
+
+      if (navbarStart.classList.contains("dontshow")) {
+        navbarStart.classList.remove("dontshow");
+        navbarStart.classList.add("show");
+      } else {
+        navbarStart.classList.remove("show");
+        navbarStart.classList.add("dontshow");
+      }
     },
+    resize() {
+      var navbarStart = document.getElementById("navbarBasicExample");
+      if (window.innerWidth > 1000) {
+        navbarStart.classList.remove("show");
+        navbarStart.classList.remove("dontshow");
+      }
+    },
+  },
+  components: {
+    LoginBadge,
+  },
+  mounted: function () {
+    window.addEventListener("resize", this.resize);
   },
 };
 </script>
@@ -129,5 +148,13 @@ span {
   font-size: 0.5em;
   z-index: 3;
   transform: translate(-21px, -9px);
+}
+.show {
+  float: none;
+  display: block;
+  text-align: left;
+}
+.dontshow {
+  display: none;
 }
 </style>

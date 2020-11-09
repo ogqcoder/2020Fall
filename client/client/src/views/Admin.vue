@@ -1,12 +1,12 @@
 <template>
   <div class="page">
     <div class="columns">
-      <div class="column is-one-fifth">
+      <div id="menu" class="column is-one-fifth">
         <aside class="menu">
           <p class="menu-label">General</p>
           <ul class="menu-list">
             <li><a>Dashboard</a></li>
-            <li><a>Customers</a></li>
+            <li><a>Users</a></li>
           </ul>
           <p class="menu-label">Administration</p>
           <ul class="menu-list">
@@ -31,7 +31,7 @@
           </ul>
         </aside>
       </div>
-      <div class="column is-two-thirds">
+      <div class="users column is-two-thirds">
         <table>
           <h1>User Table</h1>
           <tr>
@@ -54,7 +54,13 @@
             <td>thebestrobin</td>
             <td>2014</td>
           </tr>
+          <tr>
+            <td><input type="text" name="" id="" /></td>
+            <td><input type="text" name="" id="" /></td>
+            <td>Now</td>
+          </tr>
         </table>
+        <button id="user-btn">Add users</button>
       </div>
     </div>
   </div>
@@ -80,5 +86,16 @@ th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+.menu {
+  margin-left: 15px;
+}
+#user-btn {
+  position: absolute;
+  right: 10px;
+  margin-top: 10px;
+}
+.users {
+  position: relative;
 }
 </style>

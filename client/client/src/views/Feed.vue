@@ -5,12 +5,13 @@
       <div class="column is-two-thirds">
         <div class="title is-3">Main Feed</div>
 
-        <Posts v-bind:key="i" v-for="(x, i) in posts" :post="x" />
+        <Posts :key="i" v-for="(x, i) in posts" :post="x" />
       </div>
       <div class="column is-one-third">
         <Sidebar />
       </div>
     </div>
+    <!-- <div :key="i" v-for="(item, i) in items">Hello</div> -->
   </div>
 </template>
 
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       posts,
+      // items: ["hello", "beast", "king"],
     };
   },
   components: {
