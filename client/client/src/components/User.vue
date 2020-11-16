@@ -1,21 +1,22 @@
 <template>
-  <div class="form">
-    <form action="/feed">
-      <label for="">Email</label>
-      <input type="email" />
-      <label for="">Password</label>
-      <input type="password" />
-      <button @click.prevent="login" type="submit">Submit</button>
-    </form>
-  </div>
+  <tr>
+    <td>
+      {{ users.handle }}
+    </td>
+    <td>{{ users.firstname }} {{ users.lastname }}</td>
+    <td>{{ users.datejoined }}</td>
+    <td>
+      <a v-on:click="clicked">{{ users.id }}</a>
+    </td>
+  </tr>
 </template>
 
 <script>
 export default {
   name: "User",
   props: {
-    be: String,
-    login: Function,
+    users: Object,
+    remove: Function,
   },
   data() {
     return {
@@ -27,27 +28,25 @@ export default {
     king() {
       console.log("hello");
     },
+    clicked() {
+      this.$emit("clicked");
+    },
+    // remove() {
+    //   // this.users = this.users.filter((value) => value.id != this.users.id);
+    //   console.log(this.users);
+    // },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.form {
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+td {
+  padding: 8px;
+  border-left: 1px solid lightgray;
 }
-.form form {
-  width: 50%;
-}
-.form input {
-  display: block;
-  width: 100%;
-  margin: 10px 0px;
-  padding: 10px;
-  outline: none;
-  font-size: 20px;
+
+tr:nth-child(odd) {
+  border-left: 0px solid black;
 }
 </style>

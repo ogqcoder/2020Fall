@@ -14,7 +14,10 @@
 
         <div class="name">Shikamaru Nara</div>
         <div class="bio">
-          <p>Main Exercise: Running</p>
+          <p :key="i" v-for="(x, i) in profile">
+            Main Exercise:
+            {{ x.exercises }}
+          </p>
           calories burnt Today: 300
         </div>
         <div class="follow-group">
@@ -45,7 +48,15 @@
 </template>
 
 <script>
-export default {};
+import { profile } from "@/models/profile.js";
+export default {
+  data() {
+    return {
+      profile,
+      // items: ["hello", "beast", "king"],
+    };
+  },
+};
 </script>
 
 <style scoped>

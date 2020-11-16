@@ -31,43 +31,108 @@
           </ul>
         </aside>
       </div>
+      <!-- User table  -->
       <div class="users column is-two-thirds">
         <table>
           <h1>User Table</h1>
           <tr>
-            <th>Name</th>
             <th>Username</th>
+            <th>Name</th>
             <th>Date Joined</th>
+            <td>remove</td>
           </tr>
           <tr>
             <td>Alfred Pennyworth</td>
             <td>pennyforyouthoughts</td>
             <td>2019</td>
+            <td>remove</td>
           </tr>
           <tr>
             <td>Bruce Wayne</td>
             <td>iamvengeance</td>
             <td>2018</td>
+            <td>remove</td>
           </tr>
-          <tr>
-            <td>Richard Grayson</td>
-            <td>thebestrobin</td>
-            <td>2014</td>
-          </tr>
-          <tr>
-            <td><input type="text" name="" id="" /></td>
-            <td><input type="text" name="" id="" /></td>
-            <td>Now</td>
-          </tr>
+
+          <User
+            :remove="remove"
+            @clicked="remove(i)"
+            :users="x"
+            v-for="(x, i) in users"
+            :key="i"
+            ref="bar"
+            :deletekey="i"
+          />
         </table>
-        <button id="user-btn">Add users</button>
+        <h1>Add users</h1>
+        <form id="form" action="/admin" onsubmit="submit">
+          <input type="text" name="fname" id="fname" />
+          <input type="text" name="lname" id="lname" />
+          <input type="text" name="handle" id="handle" />
+          <button id="user-btn" v-on:click="addUser">Add users</button>
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { posts } from "@/models/feed";
+import User from "@/components/User.vue";
+import { users } from "@/models/users.js";
+var hello;
+var id = 3;
+
+export default {
+  data() {
+    return {
+      posts,
+      users,
+      usersinthis: [],
+      hello,
+    };
+  },
+  components: {
+    User,
+  },
+  methods: {
+    addUser() {
+      var f = document.getElementById("fname").value;
+      var q = document.getElementById("lname").value;
+      var h = document.getElementById("handle").value;
+      id++;
+      users.push({
+        firstname: f,
+        lastname: q,
+        handle: h,
+        datejoined: new Date().getFullYear(),
+        id: id,
+      });
+      // return docum;
+    },
+    submit() {
+      // document.getElement;
+      hello = "king";
+      console.log("hello");
+    },
+    remove(index) {
+      // this.users = this.users.filter((value) => value.id != index);
+      this.users.splice(index, 1);
+      // console.log(index);
+      // console.log("hello");
+    },
+    beast() {
+      console.log("I am the beast");
+    },
+  },
+  mounted() {
+    var form = document.getElementById("form");
+    function handleForm(event) {
+      event.preventDefault();
+    }
+    form.addEventListener("submit", handleForm);
+  },
+};
 </script>
 
 <style scoped>
@@ -97,5 +162,14 @@ tr:nth-child(even) {
 }
 .users {
   position: relative;
+}
+form {
+  width: 100%;
+}
+form input {
+  width: 20%;
+  margin: 0 20px;
+  padding: 8px;
+  outline: none;
 }
 </style>
