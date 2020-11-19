@@ -13,7 +13,8 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
+// app.use(express.static(__dirname + '../docs'))
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

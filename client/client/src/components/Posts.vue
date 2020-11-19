@@ -23,9 +23,7 @@
       </div>
 
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-        iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
-        <a href="#">#responsive</a>
+        {{ post.message }}
         <br />
         <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
       </div>
@@ -37,6 +35,11 @@
 export default {
   props: {
     post: Object,
+  },
+  methods: {
+    // clicked() {
+    //   this.$emit("clicked");
+    // },
   },
 };
 </script>

@@ -9,13 +9,13 @@ export const posts = [
         owner: {
             name: "G Smith",
             handle: "unlimited_g",
-            profile: "",
+
 
         },//huh
     },
 
-    {},
-    {},
+    // {},
+    // {},
 
 
 ];

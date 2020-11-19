@@ -16,35 +16,28 @@
       <a>Sources</a>
       <a>Forks</a>
     </p> -->
-    <a class="panel-block is-active">
+    <a
+      v-for="(user, i) in users[0].followers"
+      :key="i"
+      class="panel-block is-active"
+    >
       <span class="panel-icon">
         <i class="fas fa-book" aria-hidden="true"></i>
       </span>
-      Goku
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      Vegeta
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      Master Roshi
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      jgthms.github.io
+      {{ user }}
     </a>
   </nav>
 </template>
 
 <script>
-export default {};
+import { users } from "@/models/users.js";
+export default {
+  data() {
+    return {
+      users,
+    };
+  },
+};
 </script>
 
 <style>

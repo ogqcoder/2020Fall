@@ -24,9 +24,9 @@ router
     })
     .post('/', (req, res, next) => {
         users.add(
-            req.body.FirstName,
-            req.body.LastName,
-            req.body.email,
+            req.body.Firstname,
+            req.body.Lastname,
+            req.body.Email,
             req.body.Password,
             req.body.User_Type /* User */,
             //req.body.DOB
@@ -35,12 +35,12 @@ router
         }).catch(next)
     })
     .post('/register', (req, res, next) => {
-        users.add(
-            req.body.FirstName,
-            req.body.LastName,
-            req.body.email,
+        users.register(
+            req.body.Firstname,
+            req.body.Lastname,
+            req.body.Email,
             req.body.Password,
-            req.body.User_Type /* User */,
+            6/* User */
             //req.body.DOB
         ).then(newUser => {
             res.send(newUser);
@@ -48,9 +48,9 @@ router
     })
     .put('/:id', (req, res, next) => {
         users.update(req.params.id,
-            req.body.FirstName,
-            req.body.LastName,
-            req.body.email,
+            req.body.Firstname,
+            req.body.Lastname,
+            req.body.Email,
             req.body.Password,
             req.body.User_Type
         ).then(newUser => {
@@ -61,5 +61,10 @@ router
         users.remove(req.params.id).then(msg => {
             res.send(msg);
         }).catch(next)
+    })
+    .post('/follow', (req, res, next) => {
+        // users.follow()
+    }).post('/login', (req, res, next) => {
+        users.login(req.body.Email, req.body.Password).then(response => { res.send(response) }).catch(next)
     })
 module.exports = router;

@@ -1,6 +1,13 @@
 
 <template>
   <div id="app">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+
     <Nav />
     <Notifications />
     <router-view />
@@ -12,6 +19,7 @@
 import Nav from "@/components/Nav.vue";
 import Notifications from "@/components/Notifications.vue";
 import "bulma/css/bulma.css";
+
 export default {
   name: "Login",
   components: {
