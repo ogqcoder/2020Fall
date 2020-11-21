@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div style="color: red; font-size: 100px">hello</div>
+    <!-- <div style="color: red; font-size: 100px">hello</div> -->
   </div>
 </template>
 
