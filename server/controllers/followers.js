@@ -1,5 +1,5 @@
 const express = require('express');
-const comments = require('../models/follower');
+const follower = require('../models/follower');
 
 const router = express.Router();
 
@@ -14,40 +14,19 @@ router
         comments.getCommentsFromThatPost(id).then(x => res.send(x))
             .catch(next);
     })
-    .get('/types', (req, res, next) => {
-        comments.getTypes().then(x => res.send(x))
-            .catch(next);
-    })
-    .get('/search', (req, res, next) => {
-        comments.search(req.query.q).then(x => res.send(x))
-            .catch(next);
-    })
-    .post('/', (req, res, next) => {
-        comments.add(
-            req.body.firstname,
-            req.body.lastname,
-            // req.body.DOB,
-            req.body.email,
-            req.body.password,
-            6 /* User */,
-        ).then(newUser => {
-            res.send(newUser);
+    .post('/:id/follow', (req, res, next) => {
+        follower.follow(req.params.id,
+            req.body.fid
+        ).then(followed => {
+            res.send(followed);
         }).catch(next)
     })
-    .put('/:id', (req, res, next) => {
-        comments.update(req.params.id,
-            req.body.firstname,
-            req.body.lastname,
-            req.body.email,
-            req.body.password,
-            6 /* User */,
-        ).then(newUser => {
-            res.send(newUser);
+    .delete('/:id/unfollow', (req, res, next) => {
+        follower.unfollow(req.params.id,
+            req.body.followerid
+        ).then(followed => {
+            res.send(followed);
         }).catch(next)
     })
-    .delete('/:id', (req, res, next) => {
-        comments.remove(req.params.id).then(msg => {
-            res.send(msg);
-        }).catch(next)
-    })
+
 module.exports = router;

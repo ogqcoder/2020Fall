@@ -3,6 +3,7 @@ const mongoose = require("mongoose"); //database
 const users = require("./controllers/users");
 const posts = require("./controllers/posts");
 const comments = require("./controllers/comments");
+const followers = require("./controllers/followers");
 require('dotenv').config();
 // mongoose.connect("mongodb://localhost/exercise", {
 //     useNewUrlParser: true,
@@ -27,6 +28,7 @@ app.get("/", async (req, res) => {
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/comments', comments)
+app.use('/followers', followers)
 
 app.listen(port, function () {
     console.log("Started");

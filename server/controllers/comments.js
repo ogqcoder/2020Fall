@@ -23,31 +23,26 @@ router
             .catch(next);
     })
     .post('/', (req, res, next) => {
-        comments.add(
-            req.body.firstname,
-            req.body.lastname,
-            // req.body.DOB,
-            req.body.email,
-            req.body.password,
-            6 /* User */,
+        comments.comment(
+            req.body.Text,
+            req.body.Post_id,
+            req.body.Owner_id
         ).then(newUser => {
             res.send(newUser);
-        }).catch(next)
+        }).catch(next) //finished 
     })
     .put('/:id', (req, res, next) => {
-        comments.update(req.params.id,
-            req.body.firstname,
-            req.body.lastname,
-            req.body.email,
-            req.body.password,
-            6 /* User */,
+        comments.updateComment(
+            req.params.id, //this is COMMENT id and not post or user id may change to body instead of params
+            req.body.Text,
+
         ).then(newUser => {
             res.send(newUser);
         }).catch(next)
     })
     .delete('/:id', (req, res, next) => {
-        comments.remove(req.params.id).then(msg => {
+        comments.deleteComment(req.params.id).then(msg => {
             res.send(msg);
-        }).catch(next)
+        }).catch(next) // finished
     })
 module.exports = router;

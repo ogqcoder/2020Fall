@@ -54,6 +54,12 @@
             <div class="pro column is-half" style="">
               <p>Goal:</p>
               <p>To sculpt a better body</p>
+              past exercises:
+              <ul>
+                <li>Jumping Jacks</li>
+                <li>Push Ups</li>
+                <li>Squats</li>
+              </ul>
             </div>
           </div>
         </div>
