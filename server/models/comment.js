@@ -49,4 +49,4 @@ async function remove(id) {
 
 const search = async q => await mysql.query(`SELECT id, FirstName, LastName FROM Users WHERE LastName LIKE ? OR FirstName LIKE ?; `, [`%${q}%`, `%${q}%`]);
 
-module.exports = { deleteComment, getCommentsFromThatPost, comment, updateComment }
+module.exports = { deleteComment, getCommentsFromThatPost, comment, updateComment, getAll }

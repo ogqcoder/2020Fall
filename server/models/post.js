@@ -7,14 +7,13 @@ async function getAll() {
     //await Promise.resolve()
     console.log("Called Get All")
     return await mysql.query(`SELECT * FROM ${PREFIX}Posts`);
-}
+} //finished
 
 async function get(id) {
     const rows = await mysql.query(`SELECT * FROM ${PREFIX}Posts WHERE id=?`, [id]);
     if (!rows.length) throw { status: 404, message: "Sorry, there is no such user" };
     return rows;
 }
-
 
 
 async function add(URL, Text, Mediatype, Owner_id) {
@@ -36,4 +35,4 @@ async function remove(owner_id, post_id) {
 
 const search = async q => await mysql.query(`SELECT id, FirstName, LastName FROM ${PREFIX} Posts WHERE LastName LIKE ? OR FirstName LIKE ?; `, [` % ${q}% `, ` % ${q}% `]);
 
-module.exports = { add, update, remove, search }
+module.exports = { add, update, remove, search, getAll }

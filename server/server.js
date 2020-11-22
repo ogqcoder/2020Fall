@@ -1,5 +1,6 @@
 const express = require("express"); //server
 const mongoose = require("mongoose"); //database
+const path = require("path");
 const users = require("./controllers/users");
 const posts = require("./controllers/posts");
 const comments = require("./controllers/comments");
@@ -19,17 +20,37 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-// app.use(methodOverride("_method"));
+app.use(express.static(__dirname + '/../docs/'));
 
-app.get("/", async (req, res) => {
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
+
+//  Authentication
+app.use(function (req, res, next) {
+    const arr = (req.headers.authorization || "").split(" ");
+    if (arr.length > 1 && arr[1] != null) {
+        req.userId = +arr[1];
+    }
+    next();
+});
+
+
+
 
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/comments', comments)
 app.use('/followers', followers)
 
+app.get("*", async (req, res) => {
+    const filename = path.join(__dirname + '/../docs/index.html')
+    console.log(filename);
+    res.sendFile(filename)
+});
 app.listen(port, function () {
     console.log("Started");
 });

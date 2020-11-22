@@ -26,10 +26,9 @@ router
         users.add(
             req.body.Firstname,
             req.body.Lastname,
-            req.body.Email,
             req.body.Password,
-            req.body.User_Type /* User */,
-            //req.body.DOB
+            6/* User */
+
         ).then(newUser => {
             res.send(newUser);
         }).catch(next)

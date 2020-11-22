@@ -46,6 +46,7 @@ async function getTypes() {
 
 async function add(FirstName, LastName, Password, User_Type) {
     const sql = `INSERT INTO ${PREFIX}Users (created_at, FirstName, LastName, Password, User_Type) VALUES ? ;`;
+    // const emailRes = await cm.add(cm.Types.EMAIL, email, true, true, res.insertId);
     const params = [[new Date(), FirstName, LastName, Password, User_Type]];
     return await mysql.query(sql, [params]);
 }
