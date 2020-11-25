@@ -17,22 +17,49 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">{{ post.owner.name }}</p>
-          <p class="subtitle is-6">{{ post.owner.handle }}</p>
+          <p class="title is-4">{{ getAUser(post.Owner_id) }}</p>
+          <p class="subtitle is-6">{{ post.Media_Type }}</p>
         </div>
       </div>
 
       <div class="content">
-        {{ post.message }}
+        {{ post.Text }}
         <br />
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        <time :datetime="post.created_at">{{
+          post.created_at.split("T")[0]
+        }}</time>
+      </div>
+      <div class="level-left">
+        <a class="level-item" aria-label="reply">
+          <span class="icon is-small">
+            <i class="fas fa-reply" aria-hidden="true"></i>
+          </span>
+        </a>
+        <a class="level-item" aria-label="retweet">
+          <span class="icon is-small">
+            <i class="fas fa-retweet" aria-hidden="true"></i>
+          </span>
+        </a>
+        <a class="level-item" aria-label="like">
+          <span class="icon is-small">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+          </span>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { getAUser } from "@/models/users.js";
+import { getPostById } from "@/models/feed.js";
 export default {
+  data() {
+    return {
+      getAUser,
+      getPostById,
+    };
+  },
   props: {
     post: Object,
   },
@@ -40,7 +67,15 @@ export default {
     // clicked() {
     //   this.$emit("clicked");
     // },
+    async getUser(data) {
+      var g = await getPostById(data);
+      console.log(g);
+    },
   },
+  created() {
+    console.log(this.post, "post");
+  },
+  mounted: {},
 };
 </script>
 

@@ -1,9 +1,9 @@
 <template>
   <tr>
     <td>
-      {{ users.handle }}
+      {{ users.Email }}
     </td>
-    <td>{{ users.firstname }} {{ users.lastname }}</td>
+    <td>{{ users.FirstName }} {{ users.LastName }}</td>
     <td>{{ users.datejoined }}</td>
     <td>
       <a v-on:click="clicked">{{ users.id }}</a>

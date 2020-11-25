@@ -44,10 +44,10 @@ async function getTypes() {
     return await mysql.query(`SELECT id, Name FROM ${PREFIX}Types WHERE Type_id = 2`);
 }
 
-async function add(FirstName, LastName, Password, User_Type) {
-    const sql = `INSERT INTO ${PREFIX}Users (created_at, FirstName, LastName, Password, User_Type) VALUES ? ;`;
+async function add(FirstName, LastName, Password, User_Type, Email) {
+    const sql = `INSERT INTO ${PREFIX}Users (created_at, FirstName, LastName, Password, User_Type, Email) VALUES ? ;`;
     // const emailRes = await cm.add(cm.Types.EMAIL, email, true, true, res.insertId);
-    const params = [[new Date(), FirstName, LastName, Password, User_Type]];
+    const params = [[new Date(), FirstName, LastName, Password, User_Type, Email]];
     return await mysql.query(sql, [params]);
 }
 
@@ -67,7 +67,7 @@ async function register(FirstName, LastName, email, Password, User_Type,) {
         throw { status: 409, message: 'You already signed up with this email. Please go to Log in.' }
     }
     const hash = await bcrypt.hash(Password, SALT_ROUNDS);
-    const res = await add(FirstName, LastName, hash, User_Type);
+    const res = await add(FirstName, LastName, hash, User_Type, email);
     const emailRes = await cm.add(cm.Types.EMAIL, email, true, true, res.insertId);
     const user = await get(res.insertId);
     return user;

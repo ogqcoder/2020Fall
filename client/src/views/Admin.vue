@@ -36,7 +36,7 @@
         <table>
           <h1>User Table</h1>
           <tr>
-            <th>Username</th>
+            <th>Email</th>
             <th>Name</th>
             <th>Date Joined</th>
             <td>remove</td>
@@ -58,7 +58,7 @@
             :remove="remove"
             @clicked="remove(i)"
             :users="x"
-            v-for="(x, i) in users"
+            v-for="(x, i) in usersList"
             :key="i"
             ref="bar"
             :deletekey="i"
@@ -79,7 +79,7 @@
 <script>
 import { posts } from "@/models/feed";
 import User from "@/components/User.vue";
-import { users } from "@/models/users.js";
+import { getList } from "@/models/users.js";
 var hello;
 var id = 3;
 
@@ -87,10 +87,14 @@ export default {
   data() {
     return {
       posts,
-      users,
-      usersinthis: [],
+      // users,
+      usersList: [],
       hello,
     };
+  },
+  async created() {
+    this.usersList = await getList();
+    // console.log(this.usersList, "usersList");
   },
   components: {
     User,
@@ -101,9 +105,9 @@ export default {
       var q = document.getElementById("lname").value;
       var h = document.getElementById("handle").value;
       id++;
-      users.push({
-        firstname: f,
-        lastname: q,
+      this.usersList.push({
+        FirstName: f,
+        LastName: q,
         handle: h,
         datejoined: new Date().getFullYear(),
         id: id,

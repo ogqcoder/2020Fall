@@ -20,6 +20,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use('/public', express.static(__dirname + '/public/'))
 app.use(express.static(__dirname + '/../docs/'));
 
 
@@ -48,7 +49,7 @@ app.use('/followers', followers)
 
 app.get("*", async (req, res) => {
     const filename = path.join(__dirname + '/../docs/index.html')
-    console.log(filename);
+    // console.log(filename);
     res.sendFile(filename)
 });
 app.listen(port, function () {

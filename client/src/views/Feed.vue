@@ -28,12 +28,13 @@
 <script>
 import Sidebar from "@/components/Sidebar.vue";
 import Posts from "@/components/Posts.vue";
-import { posts } from "@/models/feed.js";
+// import { posts } from "@/models/feed.js";
+import { getPosts } from "@/models/feed.js";
 export default {
   name: "Home",
   data() {
     return {
-      posts,
+      posts: [],
       // items: ["hello", "beast", "king"],
     };
   },
@@ -49,8 +50,7 @@ export default {
       var i = document.getElementById("image").value;
       var q = document.getElementById("text").value;
       // var h = document.getElementById("handle").value;
-
-      posts.unshift({
+      this.posts.unshift({
         imageUrl: i,
         message: q,
         owner: {
@@ -59,6 +59,9 @@ export default {
         },
       });
     },
+  },
+  async created() {
+    this.posts = await getPosts();
   },
   mounted() {
     var form = document.getElementById("form");

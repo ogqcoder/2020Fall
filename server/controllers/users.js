@@ -39,10 +39,9 @@ router
             req.body.Lastname,
             req.body.Email,
             req.body.Password,
-            6/* User */
-            //req.body.DOB
+            6
         ).then(newUser => {
-            res.send(newUser);
+            res.send({ ...newUser, Password: undefined });
         }).catch(next)
     })
     .put('/:id', (req, res, next) => {
