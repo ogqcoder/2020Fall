@@ -17,7 +17,9 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">{{ getAUser(post.Owner_id) }}</p>
+          <p class="title is-4">
+            {{ user.FirstName + " " + user.LastName }}
+          </p>
           <p class="subtitle is-6">{{ post.Media_Type }}</p>
         </div>
       </div>
@@ -40,7 +42,7 @@
             <i class="fas fa-retweet" aria-hidden="true"></i>
           </span>
         </a>
-        <a class="level-item" aria-label="like">
+        <a class="level-item" aria-label="like" id="like" @click="react()">
           <span class="icon is-small">
             <i class="fas fa-heart" aria-hidden="true"></i>
           </span>
@@ -58,6 +60,7 @@ export default {
     return {
       getAUser,
       getPostById,
+      user: String,
     };
   },
   props: {
@@ -67,17 +70,25 @@ export default {
     // clicked() {
     //   this.$emit("clicked");
     // },
-    async getUser(data) {
-      var g = await getPostById(data);
-      console.log(g);
+
+    react() {
+      if (event.target.classList.contains("red")) {
+        event.target.classList.remove("red");
+      } else {
+        event.target.classList.add("red");
+      }
     },
   },
-  created() {
-    console.log(this.post, "post");
+  async created() {
+    // console.log(this.post, "post");
+    this.user = await getAUser(this.Owner_id);
+    // console.log(this.user, "user");
   },
-  mounted: {},
 };
 </script>
 
-<style>
+<style scoped>
+.red {
+  color: red;
+}
 </style>

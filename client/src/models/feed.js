@@ -1,10 +1,14 @@
 /*
 Feed Model. The raw data to dispay
 faked in the client side  */
-import { myFetch } from "./my-fetch";
+import { myFetch, myFetch2 } from "./my-fetch";
 
 export const getPosts = function () {
     return myFetch('posts');
+}
+
+export function addPosts(data) {
+    return myFetch2('posts/', data)
 }
 
 

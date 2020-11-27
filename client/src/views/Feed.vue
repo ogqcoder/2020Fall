@@ -12,7 +12,9 @@
           <textarea name="text" id="text" cols="30" rows="10"></textarea>
           <br />
           <!-- <input type="text" name="handle" id="handle" /> -->
-          <button id="user-btn" v-on:click="addPosts">Add Posts</button>
+          <button id="user-btn" v-on:click="addPostsToDatabase">
+            Add Posts
+          </button>
         </form>
 
         <Posts :key="i" v-for="(x, i) in posts" :post="x" />
@@ -29,7 +31,7 @@
 import Sidebar from "@/components/Sidebar.vue";
 import Posts from "@/components/Posts.vue";
 // import { posts } from "@/models/feed.js";
-import { getPosts } from "@/models/feed.js";
+import { getPosts, addPosts } from "@/models/feed.js";
 export default {
   name: "Home",
   data() {
@@ -46,7 +48,7 @@ export default {
   },
 
   methods: {
-    addPosts() {
+    addPosts1() {
       var i = document.getElementById("image").value;
       var q = document.getElementById("text").value;
       // var h = document.getElementById("handle").value;
@@ -58,6 +60,13 @@ export default {
           handle: "unlimited_g",
         },
       });
+    },
+    addPostsToDatabase() {
+      var i = document.getElementById("image").value;
+      var q = document.getElementById("text").value;
+      var data = { URL: i, Text: q, Mediatype: 4, Owner_id: 46 };
+
+      addPosts(data);
     },
   },
   async created() {

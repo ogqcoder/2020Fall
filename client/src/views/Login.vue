@@ -2,9 +2,9 @@
   <div class="form">
     <form action="/feed">
       <label for="">Email</label>
-      <input type="email" />
+      <input type="email" id="email" />
       <label for="">Password</label>
-      <input type="password" />
+      <input type="password" id="password" />
       <button @click.prevent="login" type="submit">Submit</button>
     </form>
   </div>
@@ -15,9 +15,10 @@
 // import Register from "@/components/Register.vue";
 // import User from "@/components/User.vue";
 import session from "@/models/session";
+import { realLogin } from "@/models/users";
 export default {
   name: "Login",
-  data: () => {
+  data() {
     return {
       session,
     };
@@ -31,6 +32,12 @@ export default {
       };
       session.addNotification("Yay you logged in", "success");
       this.$router.push("Feed");
+    },
+    actualLogin() {
+      var e = document.getElementById("email").value;
+      var p = document.getElementById("password").value;
+      var data = { email: e, password: p };
+      realLogin(data);
     },
   },
 };

@@ -1,4 +1,4 @@
-import { myFetch, fetchUsers } from "./my-fetch";
+import { myFetch, myFetch2, fetchUsers } from "./my-fetch";
 
 export function fetch() {
     return myFetch('users', true);
@@ -9,10 +9,12 @@ export function getList() {
 }
 
 export function getAUser() {
-    console.log(myFetch("users/46").then(x => x))
+    return myFetch("users/46").then(x => { return x })
 
-    return myFetch("users/46").then(x => x)
+}
 
+export function realLogin(data) {
+    myFetch2("users/login", data)
 }
 
 

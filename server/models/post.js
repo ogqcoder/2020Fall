@@ -6,7 +6,7 @@ async function getAll() {
     //throw { status: 501, message: "This is a fake error" }
     //await Promise.resolve()
     console.log("Called Get All")
-    return await mysql.query(`SELECT * FROM ${PREFIX}Posts`);
+    return await mysql.query(`SELECT * FROM ${PREFIX}Posts Order by created_at DESC`);
 } //finished
 
 async function get(id) {
