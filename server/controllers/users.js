@@ -62,7 +62,7 @@ router
     })
     .post('/follow', (req, res, next) => {
         // users.follow()
-    }).post('/login', (req, res, next) => {
+    }).get('/login', (req, res, next) => {
         users.login(req.body.Email, req.body.Password).then(response => { res.send(response) }).catch(next)
     }).post("")
 module.exports = router;

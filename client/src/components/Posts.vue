@@ -3,17 +3,14 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <!-- <img src="https://bulma.io/images/placeholders/1280x960.png" /> -->
-        <img :src="post.imageUrl" alt="Placeholder image" />
+        <img :src="post.URL" class="fit" alt="Placeholder image" />
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <img
-              src="https://bulma.io/images/placeholders/96x96.png"
-              alt="Placeholder image"
-            />
+            <img src="" alt="Placeholder image" />
           </figure>
         </div>
         <div class="media-content">
@@ -55,6 +52,7 @@
 <script>
 import { getAUser } from "@/models/users.js";
 import { getPostById } from "@/models/feed.js";
+
 export default {
   data() {
     return {
@@ -80,9 +78,9 @@ export default {
     },
   },
   async created() {
-    // console.log(this.post, "post");
-    this.user = await getAUser(this.Owner_id);
-    // console.log(this.user, "user");
+    console.log(this.post.Owner_id, "post");
+    this.user = await getAUser(this.post.Owner_id);
+    console.log(this.user, "user");
   },
 };
 </script>
@@ -90,5 +88,8 @@ export default {
 <style scoped>
 .red {
   color: red;
+}
+.fit {
+  object-fit: cover;
 }
 </style>

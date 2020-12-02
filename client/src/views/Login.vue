@@ -2,10 +2,10 @@
   <div class="form">
     <form action="/feed">
       <label for="">Email</label>
-      <input type="email" id="email" />
+      <input type="email" id="email" required />
       <label for="">Password</label>
-      <input type="password" id="password" />
-      <button @click.prevent="login" type="submit">Submit</button>
+      <input type="password" id="password" required />
+      <button @click.prevent="actualLogin" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       session,
+      logged: Boolean,
     };
   },
   components: {},
@@ -37,7 +38,10 @@ export default {
       var e = document.getElementById("email").value;
       var p = document.getElementById("password").value;
       var data = { email: e, password: p };
-      realLogin(data);
+      if (realLogin(data)) {
+        session.addNotification("Yay you logged in", "success");
+        this.$router.push("Feed");
+      }
     },
   },
 };
