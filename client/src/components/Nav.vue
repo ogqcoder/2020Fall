@@ -49,6 +49,9 @@
           <router-link class="navbar-item" to="/feed">Feed</router-link>
           <router-link class="navbar-item" to="/admin">Admin</router-link>
           <router-link class="navbar-item" to="/profile">Profile</router-link>
+          <router-link class="navbar-item" to="/autoc"
+            >Autocomplete</router-link
+          >
           <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
 

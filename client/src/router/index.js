@@ -7,6 +7,7 @@ import Feed from '../views/Feed.vue'
 import Admin from '../views/Admin.vue'
 import Profile from '../views/Profile.vue'
 import session from '../models/session'
+import Autocomplete from '../views/Autocomplete.vue'
 
 Vue.use(VueRouter)
 
@@ -49,7 +50,12 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
-  }
+  },
+  {
+    path: '/autoc',
+    name: 'Autocomplete',
+    component: Autocomplete
+  },
 ]
 
 const router = new VueRouter({
